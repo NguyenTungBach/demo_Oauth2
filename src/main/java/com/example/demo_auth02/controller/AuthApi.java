@@ -20,6 +20,12 @@ public class AuthApi {
 
     @RequestMapping(path = "/login",method = RequestMethod.POST)
     public ResponseEntity<?> login(@RequestBody User user) throws IOException {
+        if (!authService.login(user).isPresent()){
+            return new ResponseEntity(
+                    "sai mat khau hoac ko ton tai",
+                    HttpStatus.BAD_REQUEST);
+        }
+
         return new ResponseEntity(
                 authService.login(user),
                 HttpStatus.OK);

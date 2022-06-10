@@ -47,9 +47,11 @@ public class AuthService {
             authorization.setUserId(1);
             authorization.setClientId(1);
             authorizationRepository.save(authorization);
-
+            return Optional.ofNullable(authorization);
+        } else {
+            return Optional.empty();
         }
-        return Optional.ofNullable(authorization);
+
     }
 
     public Optional<Credential> checkAuthorizationCode(String authCode){
