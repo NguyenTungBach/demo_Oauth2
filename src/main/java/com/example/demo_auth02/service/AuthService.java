@@ -6,6 +6,7 @@ import com.example.demo_auth02.entity.Resource;
 import com.example.demo_auth02.entity.User;
 import com.example.demo_auth02.entity.dto.Credential;
 import com.example.demo_auth02.entity.dto.CredentialDTO;
+import com.example.demo_auth02.enumAuth.Scope;
 import com.example.demo_auth02.repository.AuthorizationRepository;
 import com.example.demo_auth02.repository.ResourceServerRepository;
 import com.example.demo_auth02.repository.UserRepository;
@@ -42,7 +43,7 @@ public class AuthService {
 
         if (userByName != null){
             authorization.setCode(UUID.randomUUID().toString());
-            authorization.setScope("image");
+            authorization.setScope(Scope.IMAGE.label);
             authorization.setUserId(1);
             authorization.setClientId(1);
             authorizationRepository.save(authorization);
